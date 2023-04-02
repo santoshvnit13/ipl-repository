@@ -19,7 +19,7 @@ class Home extends Component {
     const {teamsList, isLoading} = this.state
     const response = await fetch('https://apis.ccbp.in/ipl')
     const data = await response.json()
-    const updatedData = data.map(team => ({
+    const updatedData = data.teams.map(team => ({
       id: team.id,
       name: team.name,
       teamImageUrl: team.team_image_url,
@@ -31,8 +31,13 @@ class Home extends Component {
     const {teamsList, isLoading} = this.state
     return (
       <>
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/ipl-logo-img.png"
+          alt=" ipl logo"
+        />
+        <h1>IPL Dashboard</h1>
         {isLoading ? (
-          <div data-testid="loader">
+          <div testid="loader">
             {' '}
             <Loader type="Oval" color="#ffffff" height={50} width={50} />{' '}
           </div>
